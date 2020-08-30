@@ -1,0 +1,57 @@
+<div class="d-block">
+  <div class="d-block">
+    <label>From</label>
+
+    <div class="d-flex mb-3">
+      <div class="input-group w-25">
+        <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="fromDateModel" [minDate]="minDate"
+          ngbDatepicker #fromDatePicker="ngbDatepicker">
+        <a class="btn btn-outline-secondary" (click)="fromDatePicker.toggle()">
+          <fa-icon [icon]="['fas', 'calendar-alt']" class="fa-lg"></fa-icon>
+        </a>
+      </div>
+
+      <ngb-timepicker class="ml-3" [(ngModel)]="fromTimeModel" [spinners]="false" [meridian]="true"></ngb-timepicker>
+    </div>
+
+    <label>To</label>
+
+    <div class="d-flex">
+      <div class="input-group w-25">
+        <input class="form-control" placeholder="yyyy-mm-dd" [(ngModel)]="toDateModel" [minDate]="minDate" ngbDatepicker
+          #toDatePicker="ngbDatepicker">
+        <a class="btn btn-outline-secondary" (click)="toDatePicker.toggle()">
+          <fa-icon [icon]="['fas', 'calendar-alt']" class="fa-lg"></fa-icon>
+        </a>
+      </div>
+
+      <ngb-timepicker class="ml-3" [(ngModel)]="toTimeModel" [spinners]="false" [meridian]="true"></ngb-timepicker>
+
+      <div class="ml-3">
+        <a class="btn btn-outline-secondary" (click)="addDateTime()">
+          <fa-icon [icon]="['fas', 'plus']" class="fa-lg"></fa-icon>
+        </a>
+      </div>
+
+    </div>
+  </div>
+
+  <table class="table table-striped mt-4 w-50">
+    <thead>
+      <tr>
+        <th scope="col">Date Time</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dt of dateTimeCollection">
+        <td>
+          {{ dt.fromDateTime | date: 'MM/dd/yyyy hh:mm aa' }} - {{ dt.toDateTime | date: 'MM/dd/yyyy hh:mm aa' }}
+        </td>
+        <a class="btn btn-outline-secondary" (click)="deleteDateTime(dt.id)">
+          <fa-icon [icon]="['fas', 'trash-alt']" class="fa-lg"></fa-icon>
+        </a>
+      </tr>
+    </tbody>
+  </table>
+</div>
