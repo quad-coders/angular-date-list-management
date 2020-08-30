@@ -1,5 +1,6 @@
 # What
 Angular component to manage list of from/to date. See demo recording below.
+
 ![Demo](https://github.com/quad-coders/angular-date-list-management/blob/master/demo.gif)
 
 # Environment
